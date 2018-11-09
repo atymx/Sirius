@@ -1,0 +1,602 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		77274D3B21964EDF00D5CDAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77274D3A21964EDF00D5CDAF /* AppDelegate.swift */; };
+		77274D3D21964EDF00D5CDAF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77274D3C21964EDF00D5CDAF /* ViewController.swift */; };
+		77274D4021964EDF00D5CDAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77274D3E21964EDF00D5CDAF /* Main.storyboard */; };
+		77274D4321964EDF00D5CDAF /* Sirius.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 77274D4121964EDF00D5CDAF /* Sirius.xcdatamodeld */; };
+		77274D4521964EE000D5CDAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77274D4421964EE000D5CDAF /* Assets.xcassets */; };
+		77274D4821964EE000D5CDAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77274D4621964EE000D5CDAF /* LaunchScreen.storyboard */; };
+		77274D5321964EE000D5CDAF /* SiriusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77274D5221964EE000D5CDAF /* SiriusTests.swift */; };
+		77274D5E21964EE000D5CDAF /* SiriusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77274D5D21964EE000D5CDAF /* SiriusUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		77274D4F21964EE000D5CDAF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 77274D2F21964EDF00D5CDAF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 77274D3621964EDF00D5CDAF;
+			remoteInfo = Sirius;
+		};
+		77274D5A21964EE000D5CDAF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 77274D2F21964EDF00D5CDAF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 77274D3621964EDF00D5CDAF;
+			remoteInfo = Sirius;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		77274D3721964EDF00D5CDAF /* Sirius.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sirius.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		77274D3A21964EDF00D5CDAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		77274D3C21964EDF00D5CDAF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		77274D3F21964EDF00D5CDAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		77274D4221964EDF00D5CDAF /* Sirius.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Sirius.xcdatamodel; sourceTree = "<group>"; };
+		77274D4421964EE000D5CDAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		77274D4721964EE000D5CDAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		77274D4921964EE000D5CDAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		77274D4E21964EE000D5CDAF /* SiriusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SiriusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		77274D5221964EE000D5CDAF /* SiriusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriusTests.swift; sourceTree = "<group>"; };
+		77274D5421964EE000D5CDAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		77274D5921964EE000D5CDAF /* SiriusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SiriusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		77274D5D21964EE000D5CDAF /* SiriusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriusUITests.swift; sourceTree = "<group>"; };
+		77274D5F21964EE000D5CDAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		77274D3421964EDF00D5CDAF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		77274D4B21964EE000D5CDAF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		77274D5621964EE000D5CDAF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		77274D2E21964EDF00D5CDAF = {
+			isa = PBXGroup;
+			children = (
+				77274D3921964EDF00D5CDAF /* Sirius */,
+				77274D5121964EE000D5CDAF /* SiriusTests */,
+				77274D5C21964EE000D5CDAF /* SiriusUITests */,
+				77274D3821964EDF00D5CDAF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		77274D3821964EDF00D5CDAF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				77274D3721964EDF00D5CDAF /* Sirius.app */,
+				77274D4E21964EE000D5CDAF /* SiriusTests.xctest */,
+				77274D5921964EE000D5CDAF /* SiriusUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		77274D3921964EDF00D5CDAF /* Sirius */ = {
+			isa = PBXGroup;
+			children = (
+				77274D3A21964EDF00D5CDAF /* AppDelegate.swift */,
+				77274D3C21964EDF00D5CDAF /* ViewController.swift */,
+				77274D3E21964EDF00D5CDAF /* Main.storyboard */,
+				77274D4421964EE000D5CDAF /* Assets.xcassets */,
+				77274D4621964EE000D5CDAF /* LaunchScreen.storyboard */,
+				77274D4921964EE000D5CDAF /* Info.plist */,
+				77274D4121964EDF00D5CDAF /* Sirius.xcdatamodeld */,
+			);
+			path = Sirius;
+			sourceTree = "<group>";
+		};
+		77274D5121964EE000D5CDAF /* SiriusTests */ = {
+			isa = PBXGroup;
+			children = (
+				77274D5221964EE000D5CDAF /* SiriusTests.swift */,
+				77274D5421964EE000D5CDAF /* Info.plist */,
+			);
+			path = SiriusTests;
+			sourceTree = "<group>";
+		};
+		77274D5C21964EE000D5CDAF /* SiriusUITests */ = {
+			isa = PBXGroup;
+			children = (
+				77274D5D21964EE000D5CDAF /* SiriusUITests.swift */,
+				77274D5F21964EE000D5CDAF /* Info.plist */,
+			);
+			path = SiriusUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		77274D3621964EDF00D5CDAF /* Sirius */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 77274D6221964EE000D5CDAF /* Build configuration list for PBXNativeTarget "Sirius" */;
+			buildPhases = (
+				77274D3321964EDF00D5CDAF /* Sources */,
+				77274D3421964EDF00D5CDAF /* Frameworks */,
+				77274D3521964EDF00D5CDAF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Sirius;
+			productName = Sirius;
+			productReference = 77274D3721964EDF00D5CDAF /* Sirius.app */;
+			productType = "com.apple.product-type.application";
+		};
+		77274D4D21964EE000D5CDAF /* SiriusTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 77274D6521964EE000D5CDAF /* Build configuration list for PBXNativeTarget "SiriusTests" */;
+			buildPhases = (
+				77274D4A21964EE000D5CDAF /* Sources */,
+				77274D4B21964EE000D5CDAF /* Frameworks */,
+				77274D4C21964EE000D5CDAF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				77274D5021964EE000D5CDAF /* PBXTargetDependency */,
+			);
+			name = SiriusTests;
+			productName = SiriusTests;
+			productReference = 77274D4E21964EE000D5CDAF /* SiriusTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		77274D5821964EE000D5CDAF /* SiriusUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 77274D6821964EE000D5CDAF /* Build configuration list for PBXNativeTarget "SiriusUITests" */;
+			buildPhases = (
+				77274D5521964EE000D5CDAF /* Sources */,
+				77274D5621964EE000D5CDAF /* Frameworks */,
+				77274D5721964EE000D5CDAF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				77274D5B21964EE000D5CDAF /* PBXTargetDependency */,
+			);
+			name = SiriusUITests;
+			productName = SiriusUITests;
+			productReference = 77274D5921964EE000D5CDAF /* SiriusUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		77274D2F21964EDF00D5CDAF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1000;
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = Atyutskiy;
+				TargetAttributes = {
+					77274D3621964EDF00D5CDAF = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					77274D4D21964EE000D5CDAF = {
+						CreatedOnToolsVersion = 10.0;
+						TestTargetID = 77274D3621964EDF00D5CDAF;
+					};
+					77274D5821964EE000D5CDAF = {
+						CreatedOnToolsVersion = 10.0;
+						TestTargetID = 77274D3621964EDF00D5CDAF;
+					};
+				};
+			};
+			buildConfigurationList = 77274D3221964EDF00D5CDAF /* Build configuration list for PBXProject "Sirius" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 77274D2E21964EDF00D5CDAF;
+			productRefGroup = 77274D3821964EDF00D5CDAF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				77274D3621964EDF00D5CDAF /* Sirius */,
+				77274D4D21964EE000D5CDAF /* SiriusTests */,
+				77274D5821964EE000D5CDAF /* SiriusUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		77274D3521964EDF00D5CDAF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77274D4821964EE000D5CDAF /* LaunchScreen.storyboard in Resources */,
+				77274D4521964EE000D5CDAF /* Assets.xcassets in Resources */,
+				77274D4021964EDF00D5CDAF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		77274D4C21964EE000D5CDAF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		77274D5721964EE000D5CDAF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		77274D3321964EDF00D5CDAF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77274D3D21964EDF00D5CDAF /* ViewController.swift in Sources */,
+				77274D4321964EDF00D5CDAF /* Sirius.xcdatamodeld in Sources */,
+				77274D3B21964EDF00D5CDAF /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		77274D4A21964EE000D5CDAF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77274D5321964EE000D5CDAF /* SiriusTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		77274D5521964EE000D5CDAF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77274D5E21964EE000D5CDAF /* SiriusUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		77274D5021964EE000D5CDAF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 77274D3621964EDF00D5CDAF /* Sirius */;
+			targetProxy = 77274D4F21964EE000D5CDAF /* PBXContainerItemProxy */;
+		};
+		77274D5B21964EE000D5CDAF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 77274D3621964EDF00D5CDAF /* Sirius */;
+			targetProxy = 77274D5A21964EE000D5CDAF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		77274D3E21964EDF00D5CDAF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				77274D3F21964EDF00D5CDAF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		77274D4621964EE000D5CDAF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				77274D4721964EE000D5CDAF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		77274D6021964EE000D5CDAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		77274D6121964EE000D5CDAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		77274D6321964EE000D5CDAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Sirius/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Atyutskiy.Sirius;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		77274D6421964EE000D5CDAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Sirius/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Atyutskiy.Sirius;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		77274D6621964EE000D5CDAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SiriusTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Atyutskiy.SiriusTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sirius.app/Sirius";
+			};
+			name = Debug;
+		};
+		77274D6721964EE000D5CDAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SiriusTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Atyutskiy.SiriusTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sirius.app/Sirius";
+			};
+			name = Release;
+		};
+		77274D6921964EE000D5CDAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SiriusUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Atyutskiy.SiriusUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Sirius;
+			};
+			name = Debug;
+		};
+		77274D6A21964EE000D5CDAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SiriusUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Atyutskiy.SiriusUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Sirius;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		77274D3221964EDF00D5CDAF /* Build configuration list for PBXProject "Sirius" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				77274D6021964EE000D5CDAF /* Debug */,
+				77274D6121964EE000D5CDAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		77274D6221964EE000D5CDAF /* Build configuration list for PBXNativeTarget "Sirius" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				77274D6321964EE000D5CDAF /* Debug */,
+				77274D6421964EE000D5CDAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		77274D6521964EE000D5CDAF /* Build configuration list for PBXNativeTarget "SiriusTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				77274D6621964EE000D5CDAF /* Debug */,
+				77274D6721964EE000D5CDAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		77274D6821964EE000D5CDAF /* Build configuration list for PBXNativeTarget "SiriusUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				77274D6921964EE000D5CDAF /* Debug */,
+				77274D6A21964EE000D5CDAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		77274D4121964EDF00D5CDAF /* Sirius.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				77274D4221964EDF00D5CDAF /* Sirius.xcdatamodel */,
+			);
+			currentVersion = 77274D4221964EDF00D5CDAF /* Sirius.xcdatamodel */;
+			path = Sirius.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 77274D2F21964EDF00D5CDAF /* Project object */;
+}
