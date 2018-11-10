@@ -41,10 +41,25 @@ class MyEventViewController: UIViewController {
 
 extension MyEventViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Основная информация"
+        }
+        if section == 1 {
+            return "Организатор"
+        }
+        return nil
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        if section == 0 {
+            return 8
+        }
+        if section == 1 {
+            return 5
+        }
+        return 0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
@@ -52,12 +67,12 @@ extension MyEventViewController: UITableViewDelegate, UITableViewDataSource {
                 let cell = UITableViewCell()
                 cell.textLabel?.numberOfLines = 0
                 
-                let boldText  = "Название:"
-                let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)]
-                let attributedString = NSMutableAttributedString(string:boldText, attributes:attrs)
+                let boldText  = "Название: \n"
+                let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20)]
+                let attributedString = NSMutableAttributedString(string: boldText, attributes: attrs)
                 
                 let normalText = event.name!
-                let normalString = NSMutableAttributedString(string: normalText)
+                let normalString = NSMutableAttributedString(string: normalText, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
                 
                 attributedString.append(normalString)
                 
@@ -67,26 +82,213 @@ extension MyEventViewController: UITableViewDelegate, UITableViewDataSource {
             if indexPath.item == 1 {
                 let cell = UITableViewCell()
                 cell.textLabel?.numberOfLines = 0
-                cell.textLabel?.text = "Описание: \(event.description ?? "")"
+                
+                let boldText  = "Описание: \n"
+                let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20)]
+                let attributedString = NSMutableAttributedString(string: boldText, attributes: attrs)
+                
+                let normalText = event.description!
+                let normalString = NSMutableAttributedString(string: normalText, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
+                
+                attributedString.append(normalString)
+                
+                cell.textLabel?.attributedText = attributedString
                 return cell
             }
             if indexPath.item == 2 {
                 let cell = UITableViewCell()
                 cell.textLabel?.numberOfLines = 0
-                cell.textLabel?.text = "Тип мероприятия: \(event.type ?? "")"
+                
+                let boldText  = "Тип мероприятия: \n"
+                let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20)]
+                let attributedString = NSMutableAttributedString(string:boldText, attributes:attrs)
+                
+                let normalText = event.type!
+                let normalString = NSMutableAttributedString(string: normalText, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
+                
+                attributedString.append(normalString)
+                
+                cell.textLabel?.attributedText = attributedString
                 return cell
             }
             if indexPath.item == 3 {
                 let cell = UITableViewCell()
+                cell.textLabel?.numberOfLines = 0
+                
+                let boldText  = "Начало мероприятия: \n"
+                let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20)]
+                let attributedString = NSMutableAttributedString(string: boldText, attributes: attrs)
+ 
+                let formatter = DateFormatter()
+                formatter.dateFormat = "dd.MM.YYYY HH:mm"
+            
+                var normalText = ""
+                if let start = event.startDatetime {
+                    normalText = formatter.string(from: start)
+                } else {
+                    normalText = "Онлайн мероприятие"
+                }
+                let normalString = NSMutableAttributedString(string: normalText, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
+                
+                attributedString.append(normalString)
+                
+                cell.textLabel?.attributedText = attributedString
                 return cell
             }
             if indexPath.item == 4 {
                 let cell = UITableViewCell()
+                cell.textLabel?.numberOfLines = 0
+                
+                let boldText  = "Конец мероприятия: \n"
+                let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20)]
+                let attributedString = NSMutableAttributedString(string: boldText, attributes: attrs)
+                
+                let formatter = DateFormatter()
+                formatter.dateFormat = "dd.MM.YYYY HH:mm"
+                
+                var normalText = ""
+                if let end = event.endDatetime {
+                    normalText = formatter.string(from: end)
+                } else {
+                    normalText = "Онлайн мероприятие"
+                }
+                let normalString = NSMutableAttributedString(string: normalText, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
+                
+                attributedString.append(normalString)
+                
+                cell.textLabel?.attributedText = attributedString
                 return cell
             }
             if indexPath.item == 5 {
                 let cell = UITableViewCell()
-                cell.textLabel?.text = event.placeAddress
+                cell.textLabel?.numberOfLines = 0
+                
+                let boldText  = "Адрес: \n"
+                let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20)]
+                let attributedString = NSMutableAttributedString(string: boldText, attributes: attrs)
+                
+                let normalText = event.placeAddress ?? "Не указан"
+                let normalString = NSMutableAttributedString(string: normalText, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
+                
+                attributedString.append(normalString)
+                
+                cell.textLabel?.attributedText = attributedString
+                return cell
+            }
+            if indexPath.item == 6 {
+                let cell = UITableViewCell()
+                cell.textLabel?.numberOfLines = 0
+                
+                let boldText  = "Email: \n"
+                let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20)]
+                let attributedString = NSMutableAttributedString(string: boldText, attributes: attrs)
+                
+                let normalText = event.contactEmail ?? "Не указан"
+                let normalString = NSMutableAttributedString(string: normalText, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
+                
+                attributedString.append(normalString)
+                
+                cell.textLabel?.attributedText = attributedString
+                return cell
+            }
+            if indexPath.item == 7 {
+                let cell = UITableViewCell()
+                cell.textLabel?.numberOfLines = 0
+                
+                let boldText  = "Контакты: \n"
+                let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20)]
+                let attributedString = NSMutableAttributedString(string: boldText, attributes: attrs)
+                
+                let normalText = event.contactData ?? "Не указаны"
+                let normalString = NSMutableAttributedString(string: normalText, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
+                
+                attributedString.append(normalString)
+                
+                cell.textLabel?.attributedText = attributedString
+                return cell
+            }
+        }
+        if indexPath.section == 1 {
+            if indexPath.item == 0 {
+                let cell = UITableViewCell()
+                cell.textLabel?.numberOfLines = 0
+                if event.organizer?.isVerificated == true {
+                    let boldText = "Верифицирован"
+                    let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20),
+                                 NSAttributedString.Key.foregroundColor: UIColor.green]
+                    let attributedString = NSMutableAttributedString(string: boldText, attributes: attrs)
+                    cell.textLabel?.attributedText = attributedString
+                } else {
+                    let boldText = "Не верифицирован"
+                    let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20),
+                                 NSAttributedString.Key.foregroundColor: UIColor.red]
+                    let attributedString = NSMutableAttributedString(string: boldText, attributes: attrs)
+                    cell.textLabel?.attributedText = attributedString
+                }
+                return cell
+            }
+            if indexPath.item == 1 {
+                let cell = UITableViewCell()
+                cell.textLabel?.numberOfLines = 0
+                
+                let boldText  = "Имя: \n"
+                let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20)]
+                let attributedString = NSMutableAttributedString(string: boldText, attributes: attrs)
+                
+                let normalText = event.organizer?.name ?? "Не указано"
+                let normalString = NSMutableAttributedString(string: normalText, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
+                
+                attributedString.append(normalString)
+                
+                cell.textLabel?.attributedText = attributedString
+                return cell
+            }
+            if indexPath.item == 2 {
+                let cell = UITableViewCell()
+                cell.textLabel?.numberOfLines = 0
+                
+                let boldText  = "Email: \n"
+                let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20)]
+                let attributedString = NSMutableAttributedString(string: boldText, attributes: attrs)
+                
+                let normalText = event.organizer?.contactEmail ?? "Не указан"
+                let normalString = NSMutableAttributedString(string: normalText, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
+                
+                attributedString.append(normalString)
+                
+                cell.textLabel?.attributedText = attributedString
+                return cell
+            }
+            if indexPath.item == 3 {
+                let cell = UITableViewCell()
+                cell.textLabel?.numberOfLines = 0
+                
+                let boldText  = "Контакты: \n"
+                let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20)]
+                let attributedString = NSMutableAttributedString(string: boldText, attributes: attrs)
+                
+                let normalText = event.organizer?.contactData ?? "Не указаны"
+                let normalString = NSMutableAttributedString(string: normalText, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
+                
+                attributedString.append(normalString)
+                
+                cell.textLabel?.attributedText = attributedString
+                return cell
+            }
+            if indexPath.item == 4 {
+                let cell = UITableViewCell()
+                cell.textLabel?.numberOfLines = 0
+                
+                let boldText  = "Описание: \n"
+                let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20)]
+                let attributedString = NSMutableAttributedString(string: boldText, attributes: attrs)
+                
+                let normalText = event.organizer?.description ?? "Не указано"
+                let normalString = NSMutableAttributedString(string: normalText, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
+                
+                attributedString.append(normalString)
+                
+                cell.textLabel?.attributedText = attributedString
                 return cell
             }
         }
