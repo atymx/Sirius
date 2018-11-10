@@ -23,6 +23,8 @@ struct Event {
     var startDatetime: Date?
     var endDatetime: Date?
     
+    var subscribe: Bool?
+    
     static func from(json: JSON) -> Event {
         var event = Event()
 
@@ -43,6 +45,8 @@ struct Event {
         if let endDatetime = json["finish_datetime"].string {
             event.endDatetime = dateFormatter.date(from: endDatetime)
         }
+        
+        event.subscribe = json["subscribe"].bool
         
         return event
     }

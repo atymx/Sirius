@@ -22,11 +22,53 @@ class MyEventViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        update()
+    }
+    
+    // MARK: - Public methods
+    
+    func update() {
+        APIServer.shared.getEvent(id: event.id!, vkId: Int(Base.shared.userId!)!) { (event, error) in
+            if let event = event {
+                self.event = event
+                
+                if event.subscribe == true {
+                    self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Отписаться", style: .plain, target: self, action: #selector(self.subscribeButtonClicked))
+                } else {
+                    self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Подписаться", style: .plain, target: self, action: #selector(self.subscribeButtonClicked))
+                }
+                
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    // MARK: - Actions
+    
+    @objc func subscribeButtonClicked() {
+        
+        APIServer.shared.subscribe(vkId: Int(Base.shared.userId!)!, eventId: event.id!) { (event, error) in
+            if let event = event {
+                self.event = event
+                
+                if event.subscribe == true {
+                    self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Отписаться", style: .plain, target: self, action: #selector(self.subscribeButtonClicked))
+                } else {
+                    self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Подписаться", style: .plain, target: self, action: #selector(self.subscribeButtonClicked))
+                }
+                
+                self.tableView.reloadData()
+            }
+        }
+        
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -215,7 +257,7 @@ extension MyEventViewController: UITableViewDelegate, UITableViewDataSource {
                 if event.organizer?.isVerificated == true {
                     let boldText = "Верифицирован"
                     let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20),
-                                 NSAttributedString.Key.foregroundColor: UIColor.green]
+                                 NSAttributedString.Key.foregroundColor: UIColor(red: 56/255, green: 125/255, blue: 34/255, alpha: 1)]
                     let attributedString = NSMutableAttributedString(string: boldText, attributes: attrs)
                     cell.textLabel?.attributedText = attributedString
                 } else {
