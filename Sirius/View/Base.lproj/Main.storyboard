@@ -247,19 +247,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="emN-Oo-tlQ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="48" width="375" height="506"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="HYf-4f-i7Q" id="qQx-Sz-bRq"/>
                                     <outlet property="delegate" destination="HYf-4f-i7Q" id="zY4-fQ-8M9"/>
                                 </connections>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dSw-Zr-p3i">
+                                <rect key="frame" x="89" y="10" width="197" height="29"/>
+                                <segments>
+                                    <segment title="Релевантные"/>
+                                    <segment title="Ближайшие"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="emN-Oo-tlQ" firstAttribute="top" secondItem="xsI-4h-GcJ" secondAttribute="top" id="OUV-xn-S7R"/>
+                            <constraint firstItem="emN-Oo-tlQ" firstAttribute="top" secondItem="dSw-Zr-p3i" secondAttribute="bottom" constant="10" id="2dc-OM-6cX"/>
+                            <constraint firstItem="dSw-Zr-p3i" firstAttribute="centerX" secondItem="xsI-4h-GcJ" secondAttribute="centerX" id="P4G-o4-X8c"/>
                             <constraint firstItem="emN-Oo-tlQ" firstAttribute="leading" secondItem="xsI-4h-GcJ" secondAttribute="leading" id="ZGV-Tv-nAZ"/>
                             <constraint firstItem="xsI-4h-GcJ" firstAttribute="bottom" secondItem="emN-Oo-tlQ" secondAttribute="bottom" id="Zwx-Lp-eF1"/>
+                            <constraint firstItem="dSw-Zr-p3i" firstAttribute="top" secondItem="xsI-4h-GcJ" secondAttribute="top" constant="10" id="mMw-G4-RJW"/>
                             <constraint firstItem="xsI-4h-GcJ" firstAttribute="trailing" secondItem="emN-Oo-tlQ" secondAttribute="trailing" id="r4x-Se-Qix"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xsI-4h-GcJ"/>
