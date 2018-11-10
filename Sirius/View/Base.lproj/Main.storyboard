@@ -267,6 +267,7 @@
                     <navigationItem key="navigationItem" title="Мероприятия" id="8qb-H3-DQ3"/>
                     <connections>
                         <outlet property="tableView" destination="emN-Oo-tlQ" id="o3T-n0-YqL"/>
+                        <segue destination="Tod-Bx-EC3" kind="show" identifier="toMyEvent" id="fVF-jg-sEU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G0R-f7-18s" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -308,7 +309,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SpG-dW-7EF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1641" y="1017"/>
+            <point key="canvasLocation" x="1762" y="1398"/>
         </scene>
         <!--Сабтеги-->
         <scene sceneID="jQ8-f2-97S">
@@ -380,4 +381,7 @@
         <image name="calendar" width="30" height="30"/>
         <image name="graduation_cap" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="fVF-jg-sEU"/>
+    </inferredMetricsTieBreakers>
 </document>
