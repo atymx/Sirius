@@ -28,11 +28,18 @@ class AddNewEventViewController: UIViewController {
     
     // MARK: - Actions
     
-    
     @IBAction func doneButtonClicked(_ sender: Any) {
+        APIServer.shared.addEvent(event: newEvent) { (success) in
+            if success == true {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -103,6 +110,7 @@ extension AddNewEventViewController: UITableViewDelegate, UITableViewDataSource 
             cell.addNewEventViewController = self
             cell.indexPath = indexPath
             cell.textField.placeholder = "Введите название"
+            cell.textField.text = newEvent.name
             
             cell.textField.inputView = nil
             cell.textField.inputAccessoryView = nil
@@ -114,6 +122,7 @@ extension AddNewEventViewController: UITableViewDelegate, UITableViewDataSource 
             cell.addNewEventViewController = self
             cell.indexPath = indexPath
             cell.textField.placeholder = "Введите описание"
+            cell.textField.text = newEvent.description
             
             cell.textField.inputView = nil
             cell.textField.inputAccessoryView = nil
@@ -125,6 +134,7 @@ extension AddNewEventViewController: UITableViewDelegate, UITableViewDataSource 
             cell.addNewEventViewController = self
             cell.indexPath = indexPath
             cell.textField.placeholder = "Выберите тип мероприятия"
+            cell.textField.text = newEvent.type
             
             let pickerView = UIPickerView()
             pickerView.delegate = cell
@@ -147,6 +157,7 @@ extension AddNewEventViewController: UITableViewDelegate, UITableViewDataSource 
             cell.addNewEventViewController = self
             cell.indexPath = indexPath
             cell.textField.placeholder = "Укажите адрес"
+            cell.textField.text = newEvent.placeAddress
             
             cell.textField.inputView = nil
             cell.textField.inputAccessoryView = nil
@@ -158,6 +169,13 @@ extension AddNewEventViewController: UITableViewDelegate, UITableViewDataSource 
             cell.addNewEventViewController = self
             cell.indexPath = indexPath
             cell.textField.placeholder = "Укажите дату и время начала"
+
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd.MM.YYYY HH:mm"
+            
+            if let start = newEvent.startDatetime {
+                cell.textField.text = formatter.string(from: start)
+            }
             
             let pickerView = UIDatePicker()
             pickerView.datePickerMode = .dateAndTime
@@ -182,6 +200,13 @@ extension AddNewEventViewController: UITableViewDelegate, UITableViewDataSource 
             cell.indexPath = indexPath
             cell.textField.placeholder = "Укажите дату и время окончания"
             
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd.MM.YYYY HH:mm"
+            
+            if let end = newEvent.endDatetime {
+                cell.textField.text = formatter.string(from: end)
+            }
+            
             let pickerView = UIDatePicker()
             pickerView.datePickerMode = .dateAndTime
             cell.textField.inputView = pickerView
@@ -204,6 +229,7 @@ extension AddNewEventViewController: UITableViewDelegate, UITableViewDataSource 
             cell.addNewEventViewController = self
             cell.indexPath = indexPath
             cell.textField.placeholder = "Введите email"
+            cell.textField.text = newEvent.contactEmail
             
             cell.textField.inputView = nil
             cell.textField.inputAccessoryView = nil
@@ -215,6 +241,7 @@ extension AddNewEventViewController: UITableViewDelegate, UITableViewDataSource 
             cell.addNewEventViewController = self
             cell.indexPath = indexPath
             cell.textField.placeholder = "Укажите контактные данные"
+            cell.textField.text = newEvent.contactData
             
             cell.textField.inputView = nil
             cell.textField.inputAccessoryView = nil
@@ -226,7 +253,7 @@ extension AddNewEventViewController: UITableViewDelegate, UITableViewDataSource 
             cell.addNewEventViewController = self
             cell.indexPath = indexPath
             cell.textField.placeholder = "Укажите имя"
-            
+            cell.textField.text = newEvent.organizer?.name
             cell.textField.inputView = nil
             cell.textField.inputAccessoryView = nil
             
@@ -237,6 +264,7 @@ extension AddNewEventViewController: UITableViewDelegate, UITableViewDataSource 
             cell.addNewEventViewController = self
             cell.indexPath = indexPath
             cell.textField.placeholder = "Укажите email"
+            cell.textField.text = newEvent.organizer?.contactEmail
             
             cell.textField.inputView = nil
             cell.textField.inputAccessoryView = nil
@@ -248,7 +276,7 @@ extension AddNewEventViewController: UITableViewDelegate, UITableViewDataSource 
             cell.addNewEventViewController = self
             cell.indexPath = indexPath
             cell.textField.placeholder = "Укажите контактные данные"
-            
+            cell.textField.text = newEvent.organizer?.contactData
             cell.textField.inputView = nil
             cell.textField.inputAccessoryView = nil
             
@@ -259,6 +287,7 @@ extension AddNewEventViewController: UITableViewDelegate, UITableViewDataSource 
             cell.addNewEventViewController = self
             cell.indexPath = indexPath
             cell.textField.placeholder = "Добавьте описание"
+            cell.textField.text = newEvent.organizer?.description
             
             cell.textField.inputView = nil
             cell.textField.inputAccessoryView = nil

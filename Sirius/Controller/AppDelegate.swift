@@ -21,14 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         vkDelegateReference = VKDelegateExample()
         
-        if Base.shared.token != nil {
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "main")
-            self.window?.rootViewController = vc
-            self.window?.makeKeyAndVisible()
-        }
-        
         return true
     }
     

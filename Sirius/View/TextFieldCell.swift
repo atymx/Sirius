@@ -66,15 +66,15 @@ class TextFieldCell: UITableViewCell {
     @objc func doneDatePicker() {
         
         let formatter = DateFormatter()
-        formatter.dateFormat = "MM.dd.YYYY HH:mm"
+        formatter.dateFormat = "dd.MM.YYYY HH:mm"
         
         textField.text = formatter.string(from: datePicker.date)
         
-        if indexPath.section == 3 {
+        if indexPath.section == 4 {
             addNewEventViewController.newEvent.startDatetime = datePicker.date
         }
         
-        if indexPath.section == 4 {
+        if indexPath.section == 5 {
             addNewEventViewController.newEvent.endDatetime = datePicker.date
         }
         

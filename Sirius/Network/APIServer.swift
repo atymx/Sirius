@@ -44,6 +44,10 @@ class APIServer {
         _getAllEvents(byLocation: byLocation, vkId: vkId, handler: handler)
     }
     
+    func addEvent(event: Event, handler: @escaping ((Bool?)->Void)) {
+        _addEvent(event: event, handler: handler)
+    }
+    
     // MARK: - Private methods
     
     private func _getUserInfo(vkId: Int, handler: @escaping ((User?, Error?)->Void)) {
@@ -164,6 +168,22 @@ class APIServer {
                     handler(events, nil)
                 case .failure(let error):
                     handler(nil, error)
+                }
+            }
+    }
+    
+    private func _addEvent(event: Event, handler: @escaping ((Bool?)->Void)) {
+        var params = Event.convert(event: event)
+        params["vk_id"] = Base.shared.userId
+        Alamofire
+            .request(Base.shared.apiURL + "add_event/", method: .post, parameters: params, encoding: JSONEncoding.default)
+            .responseJSON { (response) in
+                print(response)
+                switch response.result {
+                case .success(_):
+                    handler(true)
+                case .failure(_):
+                    handler(false)
                 }
             }
     }

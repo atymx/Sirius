@@ -14,6 +14,7 @@ struct User {
     var lastName: String?
     var interests: [String]?
     var achievements: [String]?
+    var picture: String?
     
     static func from(json: JSON) -> User {
         var user = User()
@@ -27,6 +28,7 @@ struct User {
         for achievement in json["achievements"].array ?? [] {
             user.achievements?.append(achievement.string!)
         }
+        user.picture = json["picture"].string
         return user
     }
 }

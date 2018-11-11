@@ -13,7 +13,7 @@ import Alamofire
 struct Event {
     
     var description: String?
-    var organizer: Organizer?
+    var organizer: Organizer? = Organizer()
     var id: Int?
     var contactEmail: String?
     var name: String?

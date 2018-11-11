@@ -25,8 +25,12 @@ class EventsViewController: UIViewController {
         super.viewDidLoad()
 
         update()
-        
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        update()
     }
     
     // MARK: - Public methods
