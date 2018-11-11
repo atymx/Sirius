@@ -13,6 +13,7 @@ class EventsViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var segment: UISegmentedControl!
     
     // MARK: - Vars
     
@@ -23,10 +24,31 @@ class EventsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        update()
+        
         // Do any additional setup after loading the view.
     }
     
-
+    // MARK: - Public methods
+    
+    func update() {
+        APIServer.shared.getAllEvents(byLocation: segment.selectedSegmentIndex == 0 ? false : true, vkId: Int(Base.shared.userId!)!) { (events, error) in
+            if let events = events {
+                self.events = events
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func segmentValueChanged(_ sender: Any) {
+        
+    }
+    
+    @IBAction func addEventButtonClicked(_ sender: Any) {
+        
+    }
     
     // MARK: - Navigation
 
@@ -45,7 +67,7 @@ class EventsViewController: UIViewController {
 
 extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 0
+        return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return events.count

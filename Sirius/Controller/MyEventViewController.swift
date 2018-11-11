@@ -16,35 +16,41 @@ class MyEventViewController: UIViewController {
     
     // MARK: - Vars
     
-    var event: Event!
+    var event: Event?
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        update()
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        update()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     // MARK: - Public methods
     
     func update() {
-        APIServer.shared.getEvent(id: event.id!, vkId: Int(Base.shared.userId!)!) { (event, error) in
-            if let event = event {
-                self.event = event
-                
-                if event.subscribe == true {
-                    self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Отписаться", style: .plain, target: self, action: #selector(self.subscribeButtonClicked))
-                } else {
-                    self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Подписаться", style: .plain, target: self, action: #selector(self.subscribeButtonClicked))
+        if event != nil {
+            APIServer.shared.getEvent(id: event!.id!, vkId: Int(Base.shared.userId!)!) { (event, error) in
+                if let event = event {
+                    print(event)
+                    self.event = event
+                    
+                    if event.subscribe == true {
+                        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Отписаться", style: .plain, target: self, action: #selector(self.subscribeButtonClicked))
+                    } else {
+                        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Подписаться", style: .plain, target: self, action: #selector(self.subscribeButtonClicked))
+                    }
+                    
+                    self.tableView.reloadData()
                 }
-                
-                self.tableView.reloadData()
             }
         }
     }
@@ -53,7 +59,7 @@ class MyEventViewController: UIViewController {
     
     @objc func subscribeButtonClicked() {
         
-        APIServer.shared.subscribe(vkId: Int(Base.shared.userId!)!, eventId: event.id!) { (event, error) in
+        APIServer.shared.subscribe(vkId: Int(Base.shared.userId!)!, eventId: event!.id!) { (event, error) in
             if let event = event {
                 self.event = event
                 
@@ -83,6 +89,7 @@ class MyEventViewController: UIViewController {
 
 extension MyEventViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
+        if event == nil {return 0}
         return 2
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -112,8 +119,7 @@ extension MyEventViewController: UITableViewDelegate, UITableViewDataSource {
                 let boldText  = "Название: \n"
                 let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20)]
                 let attributedString = NSMutableAttributedString(string: boldText, attributes: attrs)
-                
-                let normalText = event.name!
+                let normalText = event!.name!
                 let normalString = NSMutableAttributedString(string: normalText, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
                 
                 attributedString.append(normalString)
@@ -129,7 +135,7 @@ extension MyEventViewController: UITableViewDelegate, UITableViewDataSource {
                 let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20)]
                 let attributedString = NSMutableAttributedString(string: boldText, attributes: attrs)
                 
-                let normalText = event.description!
+                let normalText = event!.description!
                 let normalString = NSMutableAttributedString(string: normalText, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
                 
                 attributedString.append(normalString)
@@ -145,7 +151,7 @@ extension MyEventViewController: UITableViewDelegate, UITableViewDataSource {
                 let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20)]
                 let attributedString = NSMutableAttributedString(string:boldText, attributes:attrs)
                 
-                let normalText = event.type!
+                let normalText = event!.type!
                 let normalString = NSMutableAttributedString(string: normalText, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
                 
                 attributedString.append(normalString)
@@ -165,7 +171,7 @@ extension MyEventViewController: UITableViewDelegate, UITableViewDataSource {
                 formatter.dateFormat = "dd.MM.YYYY HH:mm"
             
                 var normalText = ""
-                if let start = event.startDatetime {
+                if let start = event!.startDatetime {
                     normalText = formatter.string(from: start)
                 } else {
                     normalText = "Онлайн мероприятие"
@@ -189,7 +195,7 @@ extension MyEventViewController: UITableViewDelegate, UITableViewDataSource {
                 formatter.dateFormat = "dd.MM.YYYY HH:mm"
                 
                 var normalText = ""
-                if let end = event.endDatetime {
+                if let end = event!.endDatetime {
                     normalText = formatter.string(from: end)
                 } else {
                     normalText = "Онлайн мероприятие"
@@ -209,7 +215,7 @@ extension MyEventViewController: UITableViewDelegate, UITableViewDataSource {
                 let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20)]
                 let attributedString = NSMutableAttributedString(string: boldText, attributes: attrs)
                 
-                let normalText = event.placeAddress ?? "Не указан"
+                let normalText = event!.placeAddress ?? "Не указан"
                 let normalString = NSMutableAttributedString(string: normalText, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
                 
                 attributedString.append(normalString)
@@ -225,7 +231,7 @@ extension MyEventViewController: UITableViewDelegate, UITableViewDataSource {
                 let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20)]
                 let attributedString = NSMutableAttributedString(string: boldText, attributes: attrs)
                 
-                let normalText = event.contactEmail ?? "Не указан"
+                let normalText = event!.contactEmail ?? "Не указан"
                 let normalString = NSMutableAttributedString(string: normalText, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
                 
                 attributedString.append(normalString)
@@ -241,7 +247,7 @@ extension MyEventViewController: UITableViewDelegate, UITableViewDataSource {
                 let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20)]
                 let attributedString = NSMutableAttributedString(string: boldText, attributes: attrs)
                 
-                let normalText = event.contactData ?? "Не указаны"
+                let normalText = event!.contactData ?? "Не указаны"
                 let normalString = NSMutableAttributedString(string: normalText, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
                 
                 attributedString.append(normalString)
@@ -254,7 +260,7 @@ extension MyEventViewController: UITableViewDelegate, UITableViewDataSource {
             if indexPath.item == 0 {
                 let cell = UITableViewCell()
                 cell.textLabel?.numberOfLines = 0
-                if event.organizer?.isVerificated == true {
+                if event?.organizer?.isVerificated == true {
                     let boldText = "Верифицирован"
                     let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20),
                                  NSAttributedString.Key.foregroundColor: UIColor(red: 56/255, green: 125/255, blue: 34/255, alpha: 1)]
@@ -277,7 +283,7 @@ extension MyEventViewController: UITableViewDelegate, UITableViewDataSource {
                 let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20)]
                 let attributedString = NSMutableAttributedString(string: boldText, attributes: attrs)
                 
-                let normalText = event.organizer?.name ?? "Не указано"
+                let normalText = event?.organizer?.name ?? "Не указано"
                 let normalString = NSMutableAttributedString(string: normalText, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
                 
                 attributedString.append(normalString)
@@ -293,7 +299,7 @@ extension MyEventViewController: UITableViewDelegate, UITableViewDataSource {
                 let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20)]
                 let attributedString = NSMutableAttributedString(string: boldText, attributes: attrs)
                 
-                let normalText = event.organizer?.contactEmail ?? "Не указан"
+                let normalText = event?.organizer?.contactEmail ?? "Не указан"
                 let normalString = NSMutableAttributedString(string: normalText, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
                 
                 attributedString.append(normalString)
@@ -309,7 +315,7 @@ extension MyEventViewController: UITableViewDelegate, UITableViewDataSource {
                 let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20)]
                 let attributedString = NSMutableAttributedString(string: boldText, attributes: attrs)
                 
-                let normalText = event.organizer?.contactData ?? "Не указаны"
+                let normalText = event?.organizer?.contactData ?? "Не указаны"
                 let normalString = NSMutableAttributedString(string: normalText, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
                 
                 attributedString.append(normalString)
@@ -325,7 +331,7 @@ extension MyEventViewController: UITableViewDelegate, UITableViewDataSource {
                 let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20)]
                 let attributedString = NSMutableAttributedString(string: boldText, attributes: attrs)
                 
-                let normalText = event.organizer?.description ?? "Не указано"
+                let normalText = event?.organizer?.description ?? "Не указано"
                 let normalString = NSMutableAttributedString(string: normalText, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
                 
                 attributedString.append(normalString)

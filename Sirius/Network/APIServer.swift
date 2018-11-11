@@ -40,6 +40,10 @@ class APIServer {
         _getEvent(id: id, vkId: vkId, handler: handler)
     }
     
+    func getAllEvents(byLocation: Bool, vkId: Int, handler: @escaping (([Event]?, Error?)->Void)) {
+        _getAllEvents(byLocation: byLocation, vkId: vkId, handler: handler)
+    }
+    
     // MARK: - Private methods
     
     private func _getUserInfo(vkId: Int, handler: @escaping ((User?, Error?)->Void)) {
@@ -119,6 +123,7 @@ class APIServer {
         Alamofire
             .request(Base.shared.apiURL + "subscribe/?user_id=\(vkId)&event_id=\(eventId)", method: .get)
             .responseJSON { (response) in
+                print("response \(response)")
                 switch response.result {
                 case .success(_):
                     let json = try? JSON(data: response.data!)
@@ -133,10 +138,30 @@ class APIServer {
         Alamofire
             .request(Base.shared.apiURL + "get_event_by_id/?user_id=\(vkId)&event_id=\(id)", method: .get)
             .responseJSON { (response) in
+                print(response)
                 switch response.result {
                 case .success(_):
                     let json = try? JSON(data: response.data!)
                     handler(Event.from(json: json!), nil)
+                case .failure(let error):
+                    handler(nil, error)
+                }
+            }
+    }
+    
+    private func _getAllEvents(byLocation: Bool, vkId: Int, handler: @escaping (([Event]?, Error?)->Void)) {
+        Alamofire
+            .request(Base.shared.apiURL + "get_events/?by_location=\(byLocation)&user_id=\(vkId)", method: .get)
+            .responseJSON { (response) in
+            
+                switch response.result {
+                case .success(_):
+                    let json = try? JSON(data: response.data!)
+                    var events: [Event] = []
+                    for event in json?.array ?? [] {
+                        events.append(Event.from(json: event))
+                    }
+                    handler(events, nil)
                 case .failure(let error):
                     handler(nil, error)
                 }

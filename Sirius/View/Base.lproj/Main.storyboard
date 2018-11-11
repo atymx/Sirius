@@ -58,11 +58,34 @@
                                     <action selector="authButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C5I-pG-j2i"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="QPS-Nk-533">
+                                <rect key="frame" x="87.5" y="50" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="b33-Sf-IBV"/>
+                                    <constraint firstAttribute="height" constant="200" id="tGo-eN-hRy"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="100"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo2" translatesAutoresizingMaskIntoConstraints="NO" id="Wmr-qk-OWx">
+                                <rect key="frame" x="39" y="290" width="321" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="1hD-fD-Yib"/>
+                                    <constraint firstAttribute="width" constant="321" id="ozO-ZB-9n8"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="QPS-Nk-533" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="4p5-XU-djA"/>
+                            <constraint firstItem="Wmr-qk-OWx" firstAttribute="top" secondItem="QPS-Nk-533" secondAttribute="bottom" constant="40" id="GNE-9d-dSa"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3rf-La-POB" secondAttribute="bottom" constant="103" id="gGG-g4-GsL"/>
                             <constraint firstItem="3rf-La-POB" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="qya-hQ-11b"/>
+                            <constraint firstItem="QPS-Nk-533" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="vY8-Ww-98X"/>
+                            <constraint firstItem="Wmr-qk-OWx" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="12" id="x5w-tV-y8H"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -260,6 +283,9 @@
                                     <segment title="Релевантные"/>
                                     <segment title="Ближайшие"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentValueChanged:" destination="HYf-4f-i7Q" eventType="valueChanged" id="o84-ms-ovT"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -273,8 +299,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xsI-4h-GcJ"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Мероприятия" id="8qb-H3-DQ3"/>
+                    <navigationItem key="navigationItem" title="Мероприятия" id="8qb-H3-DQ3">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="8hS-zN-kBj">
+                            <connections>
+                                <action selector="addEventButtonClicked:" destination="HYf-4f-i7Q" id="nXT-Y2-HOa"/>
+                                <segue destination="lgN-HW-tme" kind="show" id="XhI-dG-9mK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="segment" destination="dSw-Zr-p3i" id="c4D-se-CRd"/>
                         <outlet property="tableView" destination="emN-Oo-tlQ" id="o3T-n0-YqL"/>
                         <segue destination="Tod-Bx-EC3" kind="show" identifier="toMyEvent" id="fVF-jg-sEU"/>
                     </connections>
@@ -282,6 +316,70 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G0R-f7-18s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="760.79999999999995" y="1756.3718140929536"/>
+        </scene>
+        <!--Добавить мероприятие-->
+        <scene sceneID="K5C-dJ-HFs">
+            <objects>
+                <viewController title="Добавить мероприятие" id="lgN-HW-tme" customClass="AddNewEventViewController" customModule="Sirius" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="no7-VD-a7i">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="SRF-Kk-Fsv">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="textField" id="7iD-Ud-c51" customClass="TextFieldCell" customModule="Sirius" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7iD-Ud-c51" id="mBt-Cz-4JW">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G6L-lw-YWq">
+                                                    <rect key="frame" x="20" y="0.0" width="355" height="43.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="43.5" id="krD-S1-v9Q"/>
+                                                    </constraints>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="G6L-lw-YWq" secondAttribute="bottom" id="FhM-NE-OuL"/>
+                                                <constraint firstItem="G6L-lw-YWq" firstAttribute="top" secondItem="mBt-Cz-4JW" secondAttribute="top" id="bd5-JY-KMF"/>
+                                                <constraint firstItem="G6L-lw-YWq" firstAttribute="leading" secondItem="mBt-Cz-4JW" secondAttribute="leading" constant="20" id="dGW-vg-LjZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="G6L-lw-YWq" secondAttribute="trailing" id="kju-l6-agw"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="textField" destination="G6L-lw-YWq" id="MCL-JX-LB5"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="lgN-HW-tme" id="hMF-YG-x8U"/>
+                                    <outlet property="delegate" destination="lgN-HW-tme" id="ECg-Zj-3dw"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SRF-Kk-Fsv" firstAttribute="leading" secondItem="w41-SK-w6h" secondAttribute="leading" id="Bzn-BF-ugo"/>
+                            <constraint firstItem="w41-SK-w6h" firstAttribute="bottom" secondItem="SRF-Kk-Fsv" secondAttribute="bottom" id="Eyf-Ks-UCu"/>
+                            <constraint firstItem="w41-SK-w6h" firstAttribute="trailing" secondItem="SRF-Kk-Fsv" secondAttribute="trailing" id="Wed-b0-ejJ"/>
+                            <constraint firstItem="SRF-Kk-Fsv" firstAttribute="top" secondItem="w41-SK-w6h" secondAttribute="top" id="zp0-Ph-obz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="w41-SK-w6h"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="SRF-Kk-Fsv" id="INp-eB-6BD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dgs-kx-BO3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1760.8" y="2102.698650674663"/>
         </scene>
         <!--My Event View Controller-->
         <scene sceneID="AOV-yU-iFr">
@@ -389,6 +487,8 @@
     <resources>
         <image name="calendar" width="30" height="30"/>
         <image name="graduation_cap" width="30" height="30"/>
+        <image name="logo" width="1024" height="1024"/>
+        <image name="logo2" width="106.31999969482422" height="106.31999969482422"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="fVF-jg-sEU"/>

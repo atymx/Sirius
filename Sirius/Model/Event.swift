@@ -25,6 +25,8 @@ struct Event {
     
     var subscribe: Bool?
     
+    static let types = ["Выездная школа", "Кружок", "Единоразовое мероприятие", "Другое", "Онлайн-курсы"]
+    
     static func from(json: JSON) -> Event {
         var event = Event()
 
