@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class AddNewEventViewController: UIViewController {
 
@@ -29,9 +30,11 @@ class AddNewEventViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func doneButtonClicked(_ sender: Any) {
+        SVProgressHUD.show()
         APIServer.shared.addEvent(event: newEvent) { (success) in
             if success == true {
                 self.navigationController?.popViewController(animated: true)
+                SVProgressHUD.dismiss()
             }
         }
     }

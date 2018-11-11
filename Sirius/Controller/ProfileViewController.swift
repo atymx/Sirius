@@ -14,8 +14,8 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    
     // MARK: - Vars
+    
     
     // MARK: - Lifecycle
     
