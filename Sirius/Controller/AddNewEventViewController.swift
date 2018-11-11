@@ -26,6 +26,12 @@ class AddNewEventViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    // MARK: - Actions
+    
+    
+    @IBAction func doneButtonClicked(_ sender: Any) {
+    }
+    
 
     /*
     // MARK: - Navigation
@@ -41,7 +47,7 @@ class AddNewEventViewController: UIViewController {
 
 extension AddNewEventViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 12
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -57,10 +63,37 @@ extension AddNewEventViewController: UITableViewDelegate, UITableViewDataSource 
             return "Тип мероприятия"
         }
         if section == 3 {
-            return "Начало мероприятия"
+            return "Адрес"
         }
         if section == 4 {
+            return "Начало мероприятия"
+        }
+        if section == 5 {
             return "Конец мероприятия"
+        }
+        if section == 6 {
+            return "Контактный email"
+        }
+        if section == 7 {
+            return "Контактные данные"
+        }
+        if section == 8 {
+            return "Имя (Организатор)"
+        }
+        if section == 9 {
+            return "Email (Организатор)"
+        }
+        if section == 10 {
+            return "Контакты (Организатор)"
+        }
+        if section == 11 {
+            return "Описание (Организатор)"
+        }
+        return nil
+    }
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        if section == tableView.numberOfSections - 1 {
+            return "\n\n\n\n\n\n\n\n\n\n\n\n\n"
         }
         return nil
     }
@@ -113,6 +146,17 @@ extension AddNewEventViewController: UITableViewDelegate, UITableViewDataSource 
             let cell = tableView.dequeueReusableCell(withIdentifier: "textField", for: indexPath) as! TextFieldCell
             cell.addNewEventViewController = self
             cell.indexPath = indexPath
+            cell.textField.placeholder = "Укажите адрес"
+            
+            cell.textField.inputView = nil
+            cell.textField.inputAccessoryView = nil
+            
+            return cell
+        }
+        if indexPath.section == 4 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "textField", for: indexPath) as! TextFieldCell
+            cell.addNewEventViewController = self
+            cell.indexPath = indexPath
             cell.textField.placeholder = "Укажите дату и время начала"
             
             let pickerView = UIDatePicker()
@@ -132,7 +176,7 @@ extension AddNewEventViewController: UITableViewDelegate, UITableViewDataSource 
             
             return cell
         }
-        if indexPath.section == 4 {
+        if indexPath.section == 5 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "textField", for: indexPath) as! TextFieldCell
             cell.addNewEventViewController = self
             cell.indexPath = indexPath
@@ -152,6 +196,72 @@ extension AddNewEventViewController: UITableViewDelegate, UITableViewDataSource 
                 UIBarButtonItem(title: "Готово", style: .plain, target: cell, action: #selector(cell.doneDatePicker))]
             toolbar.sizeToFit()
             cell.textField.inputAccessoryView = toolbar
+            
+            return cell
+        }
+        if indexPath.section == 6 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "textField", for: indexPath) as! TextFieldCell
+            cell.addNewEventViewController = self
+            cell.indexPath = indexPath
+            cell.textField.placeholder = "Введите email"
+            
+            cell.textField.inputView = nil
+            cell.textField.inputAccessoryView = nil
+            
+            return cell
+        }
+        if indexPath.section == 7 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "textField", for: indexPath) as! TextFieldCell
+            cell.addNewEventViewController = self
+            cell.indexPath = indexPath
+            cell.textField.placeholder = "Укажите контактные данные"
+            
+            cell.textField.inputView = nil
+            cell.textField.inputAccessoryView = nil
+            
+            return cell
+        }
+        if indexPath.section == 8 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "textField", for: indexPath) as! TextFieldCell
+            cell.addNewEventViewController = self
+            cell.indexPath = indexPath
+            cell.textField.placeholder = "Укажите имя"
+            
+            cell.textField.inputView = nil
+            cell.textField.inputAccessoryView = nil
+            
+            return cell
+        }
+        if indexPath.section == 9 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "textField", for: indexPath) as! TextFieldCell
+            cell.addNewEventViewController = self
+            cell.indexPath = indexPath
+            cell.textField.placeholder = "Укажите email"
+            
+            cell.textField.inputView = nil
+            cell.textField.inputAccessoryView = nil
+            
+            return cell
+        }
+        if indexPath.section == 10 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "textField", for: indexPath) as! TextFieldCell
+            cell.addNewEventViewController = self
+            cell.indexPath = indexPath
+            cell.textField.placeholder = "Укажите контактные данные"
+            
+            cell.textField.inputView = nil
+            cell.textField.inputAccessoryView = nil
+            
+            return cell
+        }
+        if indexPath.section == 11 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "textField", for: indexPath) as! TextFieldCell
+            cell.addNewEventViewController = self
+            cell.indexPath = indexPath
+            cell.textField.placeholder = "Добавьте описание"
+            
+            cell.textField.inputView = nil
+            cell.textField.inputAccessoryView = nil
             
             return cell
         }

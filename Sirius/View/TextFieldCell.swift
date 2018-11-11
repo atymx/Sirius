@@ -36,6 +36,27 @@ class TextFieldCell: UITableViewCell {
         if indexPath.section == 1 {
             addNewEventViewController.newEvent.description = textField.text
         }
+        if indexPath.section == 3 {
+            addNewEventViewController.newEvent.placeAddress = textField.text
+        }
+        if indexPath.section == 6 {
+            addNewEventViewController.newEvent.contactEmail = textField.text
+        }
+        if indexPath.section == 7 {
+            addNewEventViewController.newEvent.contactData = textField.text
+        }
+        if indexPath.section == 8 {
+            addNewEventViewController.newEvent.organizer?.name = textField.text
+        }
+        if indexPath.section == 9 {
+            addNewEventViewController.newEvent.organizer?.contactEmail = textField.text
+        }
+        if indexPath.section == 10 {
+            addNewEventViewController.newEvent.organizer?.contactData = textField.text
+        }
+        if indexPath.section == 11 {
+            addNewEventViewController.newEvent.organizer?.description = textField.text
+        }
     }
     
     @objc func donePicker() {

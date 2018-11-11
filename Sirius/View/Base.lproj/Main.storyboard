@@ -364,6 +364,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="w41-SK-w6h"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Новое" id="V6O-5o-yNJ">
+                        <barButtonItem key="rightBarButtonItem" title="Готово" id="YnA-Nh-6al">
+                            <connections>
+                                <action selector="doneButtonClicked:" destination="lgN-HW-tme" id="SKs-AQ-mhd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="SRF-Kk-Fsv" id="INp-eB-6BD"/>
                     </connections>
