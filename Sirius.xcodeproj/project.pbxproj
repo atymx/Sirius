@@ -30,6 +30,7 @@
 		77AD15DE219732EA005BA748 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AD15DD219732EA005BA748 /* EventsViewController.swift */; };
 		77AD15E021978054005BA748 /* AddNewEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AD15DF21978054005BA748 /* AddNewEventViewController.swift */; };
 		77AD15E221978292005BA748 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AD15E121978292005BA748 /* TextFieldCell.swift */; };
+		77AD15E42197E8F9005BA748 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AD15E32197E8F9005BA748 /* ProfileViewController.swift */; };
 		A9FADBB6DB90195750C23AF6 /* Pods_Sirius.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC7603F447FFB37180026C8 /* Pods_Sirius.framework */; };
 		AC1B919E890AC0F32910F5C6 /* Pods_SiriusUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 603F0FF1956A33AFD3298B15 /* Pods_SiriusUITests.framework */; };
 /* End PBXBuildFile section */
@@ -85,6 +86,7 @@
 		77AD15DD219732EA005BA748 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		77AD15DF21978054005BA748 /* AddNewEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewEventViewController.swift; sourceTree = "<group>"; };
 		77AD15E121978292005BA748 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
+		77AD15E32197E8F9005BA748 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		856FF9891F58B5D6C7564F28 /* Pods-SiriusTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SiriusTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SiriusTests/Pods-SiriusTests.release.xcconfig"; sourceTree = "<group>"; };
 		998A73A0371DEBBDD10CD510 /* Pods-SiriusUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SiriusUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SiriusUITests/Pods-SiriusUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B031223CD99CFB44F344DADF /* Pods-Sirius.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sirius.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sirius/Pods-Sirius.release.xcconfig"; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				7704BCDB2196F87A00FAF828 /* MyEventViewController.swift */,
 				77AD15DD219732EA005BA748 /* EventsViewController.swift */,
 				77AD15DF21978054005BA748 /* AddNewEventViewController.swift */,
+				77AD15E32197E8F9005BA748 /* ProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				77274D3D21964EDF00D5CDAF /* ViewController.swift in Sources */,
 				7704BCD62196C47200FAF828 /* CalendarViewController.swift in Sources */,
 				7704BCDA2196DF4100FAF828 /* Event.swift in Sources */,
+				77AD15E42197E8F9005BA748 /* ProfileViewController.swift in Sources */,
 				77274D4321964EDF00D5CDAF /* Sirius.xcdatamodeld in Sources */,
 				7704BCE02197074800FAF828 /* Organizer.swift in Sources */,
 				77274D7B2196636300D5CDAF /* APIServer.swift in Sources */,
