@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import Alamofire
 
 struct Event {
     
@@ -51,6 +52,31 @@ struct Event {
         event.subscribe = json["subscribe"].bool
         
         return event
+    }
+ 
+    static func convert(event: Event) -> Parameters {
+        var params: Parameters = [:]
+        params["description"] = event.description
+        params["organizer"] = Organizer.convert(organizer: event.organizer!)
+        params["id"] = event.id
+        params["contact_email"] = event.contactEmail
+        params["name"] = event.name
+        params["contact_data"] = event.contactData
+        params["place_address"] = event.placeAddress
+        params["type"] = event.type
+        params["subscribe"] = event.subscribe
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        if let start = event.startDatetime {
+            params["start_datetime"] = formatter.string(from: start)
+        }
+        if let end = event.endDatetime {
+            params["finish_datetime"] = formatter.string(from: end)
+        }
+        
+        return params
     }
     
 }

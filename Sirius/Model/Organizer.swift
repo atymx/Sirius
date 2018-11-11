@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import Alamofire
 
 struct Organizer {
     
@@ -27,6 +28,17 @@ struct Organizer {
         organizer.description  = json["description"].string
         organizer.contactData = json["contact_data"].string
         return organizer
+    }
+    
+    static func convert(organizer: Organizer) -> Parameters {
+        var params: Parameters = [:]
+        params["is_verificated"] = organizer.isVerificated
+        params["is_person"] = organizer.isPerson
+        params["name"] = organizer.name
+        params["contact_email"] = organizer.contactEmail
+        params["contact_data"] = organizer.contactData
+        params["description"] = organizer.description
+        return params
     }
     
 }
