@@ -229,10 +229,13 @@ extension CalendarViewController: VACalendarViewDelegate {
         calendarView.startDate = dates.last ?? Date()
         if let date = dates.first {
             for event in events {
-                if date.addingTimeInterval(60*60*23) >= event.startDatetime! && date <= event.endDatetime! {
-                    self.performSegue(withIdentifier: "toMyEvent", sender: event)
-                    return
+                if let start = event.startDatetime, let end = event.endDatetime {
+                    if date.addingTimeInterval(60*60*23) >= start && date <= end {
+                        self.performSegue(withIdentifier: "toMyEvent", sender: event)
+                        return
+                    }
                 }
+                
             }
         }
     }
