@@ -75,6 +75,49 @@ class CalendarViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        update()
+        
+    }
+    
+    func update() {
+        calendarView.removeFromSuperview()
+        let calendar = VACalendar(calendar: defaultCalendar)
+        calendarView = VACalendarView(frame: .zero, calendar: calendar)
+        calendarView.showDaysOut = true
+        calendarView.selectionStyle = .single
+        calendarView.dayViewAppearanceDelegate = self
+        calendarView.monthViewAppearanceDelegate = self
+        calendarView.calendarDelegate = self
+        calendarView.scrollDirection = .vertical
+        
+        APIServer.shared.getEvents(vkId: Int(Base.shared.userId!)!) { (events, error) in
+            self.events = events ?? []
+            var supplementaries: [(Date, [VADaySupplementary])] = []
+            for event in events ?? [] {
+                let startTime = event.startDatetime
+                let endTime = event.endDatetime
+                
+                if startTime == nil || endTime == nil {
+                    continue
+                }
+                
+                supplementaries.append((startTime!, [VADaySupplementary.bottomDots([.red])]))
+                supplementaries.append((endTime!, [VADaySupplementary.bottomDots([.red])]))
+                var i = 1
+                while startTime!.addingTimeInterval(TimeInterval(60*60*24*i)) <= endTime! {
+                    supplementaries.append((startTime!.addingTimeInterval(TimeInterval(60*60*24*i)), [VADaySupplementary.bottomDots([.red])]))
+                    i += 1
+                }
+            }
+            self.calendarView.setSupplementaries(supplementaries)
+        }
+        
+        view.addSubview(calendarView)
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
