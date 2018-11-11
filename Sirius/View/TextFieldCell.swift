@@ -15,6 +15,8 @@ class TextFieldCell: UITableViewCell {
     var indexPath: IndexPath!
     var addNewEventViewController: AddNewEventViewController!
     
+    var datePicker: UIDatePicker!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -37,6 +39,24 @@ class TextFieldCell: UITableViewCell {
     }
     
     @objc func donePicker() {
+        textField.endEditing(true)
+    }
+    
+    @objc func doneDatePicker() {
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM.dd.YYYY HH:mm"
+        
+        textField.text = formatter.string(from: datePicker.date)
+        
+        if indexPath.section == 3 {
+            addNewEventViewController.newEvent.startDatetime = datePicker.date
+        }
+        
+        if indexPath.section == 4 {
+            addNewEventViewController.newEvent.endDatetime = datePicker.date
+        }
+        
         textField.endEditing(true)
     }
 

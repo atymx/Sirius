@@ -56,6 +56,12 @@ extension AddNewEventViewController: UITableViewDelegate, UITableViewDataSource 
         if section == 2 {
             return "Тип мероприятия"
         }
+        if section == 3 {
+            return "Начало мероприятия"
+        }
+        if section == 4 {
+            return "Конец мероприятия"
+        }
         return nil
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -97,7 +103,53 @@ extension AddNewEventViewController: UITableViewDelegate, UITableViewDataSource 
             toolbar.items = [
                 UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
                 UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-                UIBarButtonItem(title: "Готово", style: .plain, target: self, action: #selector(cell.donePicker))]
+                UIBarButtonItem(title: "Готово", style: .plain, target: cell, action: #selector(cell.donePicker))]
+            toolbar.sizeToFit()
+            cell.textField.inputAccessoryView = toolbar
+            
+            return cell
+        }
+        if indexPath.section == 3 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "textField", for: indexPath) as! TextFieldCell
+            cell.addNewEventViewController = self
+            cell.indexPath = indexPath
+            cell.textField.placeholder = "Укажите дату и время начала"
+            
+            let pickerView = UIDatePicker()
+            pickerView.datePickerMode = .dateAndTime
+            cell.textField.inputView = pickerView
+            
+            cell.datePicker = pickerView
+            
+            let toolbar = UIToolbar(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+            toolbar.barStyle = .default
+            toolbar.items = [
+                UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+                UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+                UIBarButtonItem(title: "Готово", style: .plain, target: cell, action: #selector(cell.doneDatePicker))]
+            toolbar.sizeToFit()
+            cell.textField.inputAccessoryView = toolbar
+            
+            return cell
+        }
+        if indexPath.section == 4 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "textField", for: indexPath) as! TextFieldCell
+            cell.addNewEventViewController = self
+            cell.indexPath = indexPath
+            cell.textField.placeholder = "Укажите дату и время окончания"
+            
+            let pickerView = UIDatePicker()
+            pickerView.datePickerMode = .dateAndTime
+            cell.textField.inputView = pickerView
+            
+            cell.datePicker = pickerView
+            
+            let toolbar = UIToolbar(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+            toolbar.barStyle = .default
+            toolbar.items = [
+                UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+                UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+                UIBarButtonItem(title: "Готово", style: .plain, target: cell, action: #selector(cell.doneDatePicker))]
             toolbar.sizeToFit()
             cell.textField.inputAccessoryView = toolbar
             
