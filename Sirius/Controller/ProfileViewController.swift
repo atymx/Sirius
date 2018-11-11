@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ProfileViewController: UIViewController {
 
@@ -16,12 +17,20 @@ class ProfileViewController: UIViewController {
     
     // MARK: - Vars
     
+    var user: User? = nil
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        APIServer.shared.getUserInfo(vkId: Int(Base.shared.userId!)!) { (user, error) in
+            if let user = user {
+                self.user = user
+                self.tableView.reloadData()
+            }
+        }
+        
         // Do any additional setup after loading the view.
     }
     
@@ -40,12 +49,40 @@ class ProfileViewController: UIViewController {
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 0
+        if user == nil { return 0 }
+        return 2
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Основное"
+        }
+        if section == 1 {
+            return "Интересы"
+        }
+        return nil
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 1
+        }
+        if section == 1 {
+            return (user?.interests?.count)!
+        }
         return 0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "mainProfileCell", for: indexPath) as! MainProfileCell
+            cell.picture.kf.setImage(with: URL(string: (user?.picture)!))
+            cell.firstName.text = user?.firstName
+            cell.lastName.text = user?.lastName
+            return cell
+        }
+        if indexPath.section == 1 {
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "#\((user?.interests?[indexPath.item])!)"
+            return cell
+        }
         return UITableViewCell()
     }
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
